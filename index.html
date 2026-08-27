@@ -156,7 +156,8 @@
   .note-card p{font-size:13px;color:var(--muted)}
   .equip-section{margin-top:30px}
   .equip-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:14px}
-  .equip-item{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .equip-item{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .2s}
+  .equip-item:hover{box-shadow:0 8px 22px rgba(11,29,48,.14);transform:translateY(-3px)}
   .equip-item img{width:100%;height:180px;object-fit:cover;display:block}
   .equip-item span{display:block;padding:10px 12px;font-size:13px;color:var(--navy-900);font-weight:600;text-align:center;border-top:1px solid var(--line)}
   @media(max-width:980px){.equip-gallery{grid-template-columns:repeat(2,1fr)}}
@@ -485,19 +486,19 @@
       <div class="equip-section">
         <h3 data-zh="检测设备实景" data-en="Inspection Equipment">检测设备实景</h3>
         <div class="equip-gallery">
-          <div class="equip-item">
+          <div class="equip-item" data-zh-cap="力学检测室" data-en-cap="Mechanical Testing Lab" onclick="openLightbox('equip-lab.png',this)">
             <img src="equip-lab.png" alt="力学检测室" loading="lazy">
             <span data-zh="力学检测室" data-en="Mechanical Testing Lab">力学检测室</span>
           </div>
-          <div class="equip-item">
+          <div class="equip-item" data-zh-cap="电子万能试验机" data-en-cap="Universal Testing Machine" onclick="openLightbox('equip-utm2.png',this)">
             <img src="equip-utm2.png" alt="电子万能试验机" loading="lazy">
             <span data-zh="电子万能试验机" data-en="Universal Testing Machine">电子万能试验机</span>
           </div>
-          <div class="equip-item">
+          <div class="equip-item" data-zh-cap="金属摆锤冲击试验机" data-en-cap="Pendulum Impact Tester" onclick="openLightbox('equip-impact.png',this)">
             <img src="equip-impact.png" alt="金属摆锤冲击试验机" loading="lazy">
             <span data-zh="金属摆锤冲击试验机" data-en="Pendulum Impact Tester">金属摆锤冲击试验机</span>
           </div>
-          <div class="equip-item">
+          <div class="equip-item" data-zh-cap="直读光谱仪" data-en-cap="Optical Emission Spectrometer" onclick="openLightbox('equip-spectro.png',this)">
             <img src="equip-spectro.png" alt="直读光谱仪" loading="lazy">
             <span data-zh="直读光谱仪" data-en="Optical Emission Spectrometer">直读光谱仪</span>
           </div>
