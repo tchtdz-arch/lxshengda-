@@ -32,7 +32,7 @@
   }
   .nav-wrap{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px}
   .logo{display:flex;align-items:center}
-  .logo img{height:68px;width:auto;border-radius:0;object-fit:contain;background:transparent}
+  .logo img{height:48px;width:auto;border-radius:0;object-fit:contain;background:transparent}
   nav.main-nav{display:flex;align-items:center;gap:28px}
   nav.main-nav a{color:#4a5568;font-size:14px;transition:color .2s}
   nav.main-nav a:hover{color:var(--orange)}
