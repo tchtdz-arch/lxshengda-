@@ -287,3 +287,27 @@
 .portal-card p{font-size:13.5px;color:var(--muted);line-height:1.7;margin:0}
 .portal-card .pc-more{margin-top:auto;padding-top:10px;font-size:13.5px;font-weight:700;color:var(--orange)}
 @media (max-width:760px){.portal-grid{grid-template-columns:1fr 1fr;gap:12px}.portal-card{padding:18px 14px}}
+
+/* ===== SEO 深度优化：优势卡 / FAQ / 相关产品 ===== */
+.adv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+.adv-item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 20px;text-align:center;transition:transform .2s,box-shadow .2s}
+.adv-item:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(11,29,48,.08)}
+.adv-item .adv-num{width:36px;height:36px;line-height:36px;margin:0 auto 12px;border-radius:50%;background:var(--orange);color:#fff;font-weight:800;font-size:15px}
+.adv-item h3{font-size:16px;font-weight:800;color:var(--navy-900);margin-bottom:8px}
+.adv-item p{font-size:13px;color:var(--muted);line-height:1.7}
+.keynote{max-width:900px;margin:28px auto 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:28px 30px;font-size:15px;color:#41536a;line-height:2}
+.keynote b{color:var(--navy-900)}
+.keynote .kg{display:inline-block;background:#f0f4f8;border:1px solid var(--line);border-radius:6px;padding:2px 10px;margin:2px 4px;font-weight:700;color:var(--navy-800);font-size:14px}
+.faq-list{max-width:880px;margin:36px auto 0;display:grid;gap:12px}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.faq-item summary{list-style:none;cursor:pointer;padding:16px 20px;font-weight:700;color:var(--navy-900);display:flex;justify-content:space-between;align-items:center;gap:14px;font-size:15px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:hover{color:var(--orange)}
+.faq-item summary::after{content:"+";font-size:22px;font-weight:400;color:var(--orange);flex:none;transition:transform .25s;line-height:1}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item .a-body{padding:2px 20px 18px;color:var(--muted);font-size:14px;line-height:1.85}
+.faq-item .a-body a{color:var(--orange);font-weight:700}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.rel-grid .portal-card{padding:22px 20px}
+@media(max-width:960px){.adv-grid{grid-template-columns:1fr 1fr}.rel-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.adv-grid{grid-template-columns:1fr}.rel-grid{grid-template-columns:1fr}.keynote{padding:20px}}
