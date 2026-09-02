@@ -77,7 +77,7 @@
   .container{max-width:1180px;margin:0 auto}
   .sec-head{text-align:center;margin-bottom:52px}
   .sec-head .en{font-size:13px;letter-spacing:4px;color:var(--orange);font-weight:700;text-transform:uppercase}
-  .sec-head h2{font-size:32px;font-weight:800;margin-top:8px;color:var(--navy-900)}
+  .sec-head h1,.sec-head h2{font-size:32px;font-weight:800;margin-top:8px;color:var(--navy-900)}
   .sec-head p{color:var(--muted);margin-top:12px;font-size:15px;max-width:640px;margin-left:auto;margin-right:auto}
 
   /* ===== 产品详情页 ===== */
@@ -227,7 +227,7 @@
 
   /* ===== 联系 ===== */
   .contact-band{background:linear-gradient(160deg,var(--navy-900),var(--navy-800));color:#fff}
-  .contact-band .sec-head h2{color:#fff}
+  .contact-band .sec-head h1,.contact-band .sec-head h2{color:#fff}
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
   .contact-info h3{font-size:19px;margin-bottom:18px}
   .ci-row{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start}
