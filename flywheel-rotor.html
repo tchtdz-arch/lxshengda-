@@ -82,10 +82,16 @@
         <div style="margin-top:24px"><a href="contact.html" class="btn-outline" data-zh="索取转子技术方案 →" data-en="Request Rotor Solution →">索取转子技术方案 →</a></div>
       </div>
       <div class="pdetail-media">
-        <img src="rotor-full.png" alt="飞轮储能转子整机（含阶梯轴）" loading="lazy">
+        <img class="zoomable" src="rotor-full.png" alt="飞轮储能转子整机（含阶梯轴）" loading="lazy"
+             data-zh-cap="飞轮储能转子整机（含阶梯轴）" data-en-cap="Flywheel Rotor Assembly (with Stepped Shaft)"
+             onclick="openLightbox('rotor-full.png',this)">
         <div class="media-row">
-          <img src="rotor-body.png" alt="飞轮储能转子体" loading="lazy">
-          <img src="equip-utm2.png" alt="电子万能试验机力学性能检测" loading="lazy">
+          <img class="zoomable" src="rotor-body.png" alt="飞轮储能转子体" loading="lazy"
+               data-zh-cap="飞轮储能转子体" data-en-cap="Flywheel Rotor Body"
+               onclick="openLightbox('rotor-body.png',this)">
+          <img class="zoomable" src="equip-utm2.png" alt="电子万能试验机力学性能检测" loading="lazy"
+               data-zh-cap="力学性能检测 · 电子万能试验机" data-en-cap="Mechanical Testing · Universal Testing Machine"
+               onclick="openLightbox('equip-utm2.png',this)">
         </div>
       </div>
     </div>
@@ -113,6 +119,12 @@
   <div class="f-line" data-zh="模具钢 H13 · 各类锻件 · 飞轮储能转子锻件 · 锻造/热处理/精密加工一体化服务" data-en="H13 Die Steel · Various Forgings · Flywheel Rotor Forgings · Integrated Forging / Heat Treatment / Precision Machining"></div>
   <div class="f-line"><a href="tel:17756343718">177 5634 3718</a> · <a href="tel:18930646778">189 3064 6778</a> · <a href="mailto:tchtdz@163.com">tchtdz@163.com</a></div>
 </footer>
+
+<!-- 图片灯箱 -->
+<div class="lightbox" id="certLightbox" onclick="closeLightbox(event)">
+  <button class="lb-close" aria-label="关闭">&times;</button>
+  <img id="lightboxImg" src="" alt="大图">
+</div>
 
 <script src="assets/main.js"></script>
 </body>

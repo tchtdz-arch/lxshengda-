@@ -97,8 +97,8 @@
         <span class="p-tag" data-zh="主营产品" data-en="Main Product">主营产品</span>
         <h3 data-zh="飞轮储能转子锻件" data-en="Flywheel Rotor Forgings">飞轮储能转子锻件</h3>
         <div class="product-gallery">
-          <div class="pg-item"><img src="rotor-full.png" alt="飞轮储能转子整机 - 含阶梯轴" /></div>
-          <div class="pg-item"><img src="rotor-body.png" alt="飞轮储能转子体" /></div>
+          <div class="pg-item"><img class="zoomable" src="rotor-full.png" alt="飞轮储能转子整机 - 含阶梯轴" data-zh-cap="飞轮储能转子整机（含阶梯轴）" data-en-cap="Flywheel Rotor Assembly (with Stepped Shaft)" onclick="openLightbox('rotor-full.png',this)" /></div>
+          <div class="pg-item"><img class="zoomable" src="rotor-body.png" alt="飞轮储能转子体" data-zh-cap="飞轮储能转子体" data-en-cap="Flywheel Rotor Body" onclick="openLightbox('rotor-body.png',this)" /></div>
         </div>
         <p class="p-desc" data-zh="高强度、高纯净度大规格钢制飞轮转子，专为飞轮储能装置设计制造，高周波疲劳 1 千万次试验通过，已批量交付头部厂商。" data-en="High-strength, high-purity large-scale steel flywheel rotors, designed for flywheel energy storage systems, with 10-million-cycle high-cycle fatigue testing passed and volume delivery to leading manufacturers.">高强度、高纯净度大规格钢制飞轮转子，专为飞轮储能装置设计制造，高周波疲劳 1 千万次试验通过，已批量交付头部厂商。</p>
         <table class="spec">
@@ -150,6 +150,12 @@
   <div class="f-line"><a href="tel:17756343718">177 5634 3718</a> · <a href="tel:18930646778">189 3064 6778</a> · <a href="mailto:tchtdz@163.com">tchtdz@163.com</a></div>
 </footer>
 
+
+<!-- 图片灯箱 -->
+<div class="lightbox" id="certLightbox" onclick="closeLightbox(event)">
+  <button class="lb-close" aria-label="关闭">&times;</button>
+  <img id="lightboxImg" src="" alt="大图">
+</div>
 
 <script src="assets/main.js"></script>
 
