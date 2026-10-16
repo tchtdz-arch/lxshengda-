@@ -1,4 +1,33 @@
+# 郎溪胜达锻造有限公司 www.lxshengda.com
+# 允许所有搜索引擎抓取
+
 User-agent: *
+Allow: /
+Disallow: /404.html
+
+# 百度
+User-agent: Baiduspider
+Allow: /
+
+# 搜狗
+User-agent: Sogou web spider
+Allow: /
+
+# 360 搜索
+User-agent: 360Spider
+Allow: /
+
+# 必应
+User-agent: bingbot
+Allow: /
+
+# 谷歌
+User-agent: Googlebot
+Allow: /
+
+# 神马
+User-agent: YisouSpider
 Allow: /
 
 Sitemap: https://www.lxshengda.com/sitemap.xml
+Sitemap: https://www.lxshengda.com/sitemap.html
