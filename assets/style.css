@@ -253,6 +253,9 @@
   footer.site-footer{background:#081627;color:#8fa3b8;padding:34px 24px;text-align:center;font-size:13px}
   footer.site-footer a{color:#c8d5e2}
   footer.site-footer .f-line{margin-bottom:6px}
+  footer.site-footer .f-beian{margin-top:10px;padding-top:10px;border-top:1px solid rgba(143,163,184,.18);font-size:12px;opacity:.82}
+  footer.site-footer .f-beian a{color:#8fa3b8;text-decoration:none}
+  footer.site-footer .f-beian a:hover{color:#c8d5e2}
 
   /* ===== 响应式 ===== */
   @media(max-width:960px){
