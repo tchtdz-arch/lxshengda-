@@ -13,9 +13,25 @@
   </url>
   <url>
     <loc>https://www.lxshengda.com/products.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.lxshengda.com/rotor-full.webp</image:loc>
+      <image:title>飞轮储能转子锻件（含阶梯轴）</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.lxshengda.com/cylinder-barrel.webp</image:loc>
+      <image:title>大口径液压油缸筒体锻件</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.lxshengda.com/oil-forging-block.webp</image:loc>
+      <image:title>石油锻件·方三通方四通</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.lxshengda.com/cert-baowu-shouquan.webp</image:loc>
+      <image:title>宝武特冶授权证明（宝钢 H13 正品来源）</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://www.lxshengda.com/flywheel-rotor.html</loc>
@@ -37,9 +53,13 @@
   </url>
   <url>
     <loc>https://www.lxshengda.com/h13.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.lxshengda.com/cert-baowu-shouquan.webp</image:loc>
+      <image:title>宝武特冶授权证明（上海禹鸿为宝武特种冶金圆棒协议用户，编号 BT2627-140YX）</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://www.lxshengda.com/forgings.html</loc>

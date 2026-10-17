@@ -1,4 +1,9 @@
 .vercel/
-
 .vercel
 .env*
+
+# 百度推送准入密钥：绝不进公开仓库
+baidu_token.txt
+
+# 图片压缩原始备份
+.logo_bak/
