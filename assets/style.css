@@ -341,3 +341,16 @@ html[lang="en"] .f-line{font-size:13px}
 .bn-item span{display:block;font-size:13px;line-height:1.7;color:#5A6478}
 @media(max-width:960px){.bn-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.bn-grid{grid-template-columns:1fr}.buyer-notes{padding:20px 18px 6px}}
+
+/* ===== 材质标准对照表 ===== */
+.grade-band{padding:56px 0;background:#f7f8fb}
+.grade-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;border:1px solid #e8eaf0;border-radius:14px}
+.grade-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:720px}
+.grade-table thead th{background:#1B2233;color:#fff;font-weight:600;text-align:left;padding:13px 16px;white-space:nowrap;font-size:13px}
+.grade-table tbody td{padding:12px 16px;border-top:1px solid #eef0f5;color:#3C4658;vertical-align:top}
+.grade-table tbody tr:nth-child(even){background:#fafbfe}
+.grade-table tbody tr:hover{background:#f2f6ff}
+.grade-table .g-gb{font-weight:700;color:#1B2233;white-space:nowrap}
+.grade-table .g-use{color:#5A6478}
+.grade-note{margin:14px 4px 0;font-size:12.5px;line-height:1.75;color:#8A93A6}
+@media(max-width:760px){.grade-band{padding:40px 0}.grade-table{font-size:12.5px}.grade-table thead th,.grade-table tbody td{padding:10px 12px}}
