@@ -354,3 +354,7 @@ html[lang="en"] .f-line{font-size:13px}
 .grade-table .g-use{color:#5A6478}
 .grade-note{margin:14px 4px 0;font-size:12.5px;line-height:1.75;color:#8A93A6}
 @media(max-width:760px){.grade-band{padding:40px 0}.grade-table{font-size:12.5px}.grade-table thead th,.grade-table tbody td{padding:10px 12px}}
+
+/* 检测标准对照表（同 grade-band 内第二张表） */
+.grade-sub{margin:38px 0 16px;font-size:17px;font-weight:700;color:#1B2233}
+.grade-table-ndt{min-width:820px}
