@@ -176,12 +176,7 @@ def build(page):
     html = str(soup)
 
     # ---------- 11.6 海外习惯：英文站邮箱统一用 Gmail（送达率优于 163） ----------
-    # 联系页「Gmail · 163」并列行需要保护，否则会被替换成两个 Gmail
-    PAIR = 'tchtdz@gmail.com</a> · <a href="mailto:tchtdz@163.com">tchtdz@163.com</a>'
-    MARK = "%%PAIR_163%%"
-    html = html.replace(PAIR, MARK)
     html = html.replace("tchtdz@163.com", "tchtdz@gmail.com")
-    html = html.replace(MARK, PAIR)
 
     # ---------- 12. onclick 里的图片路径 ----------
     html = re.sub(r"openLightbox\('(?!\.\./|http)([^']+\.(?:webp|jpg|jpeg|png|gif))'",
