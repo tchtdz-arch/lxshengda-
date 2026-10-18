@@ -331,3 +331,13 @@ html[lang="en"] .lead{font-size:17px;line-height:1.8}
 html[lang="en"] .chip,html[lang="en"] .kg{letter-spacing:.01em}
 html[lang="en"] table{font-variant-numeric:tabular-nums}
 html[lang="en"] .f-line{font-size:13px}
+
+/* ===== 海外采购须知 ===== */
+.buyer-notes{margin-top:34px;background:#fff;border:1px solid #e8eaf0;border-radius:14px;padding:26px 26px 10px}
+.buyer-notes h3{font-size:19px;margin:0 0 18px;color:var(--ink,#1B2233)}
+.bn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.bn-item{background:#f7f8fb;border-radius:10px;padding:14px 16px}
+.bn-item b{display:block;font-size:13.5px;color:var(--orange,#E8590C);margin-bottom:6px}
+.bn-item span{display:block;font-size:13px;line-height:1.7;color:#5A6478}
+@media(max-width:960px){.bn-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.bn-grid{grid-template-columns:1fr}.buyer-notes{padding:20px 18px 6px}}
