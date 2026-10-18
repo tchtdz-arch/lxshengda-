@@ -361,6 +361,14 @@ def main():
         print(f"  {page:26s} 正文{st['text']:3d}  占位{st['ph']:2d}  路径{st['up']:3d}  LD{st['ld']} LD英化{st['ldfix']}")
     print(f"\n完成：{total} 个英文页 -> {EN_DIR}")
 
+    # 英文页重建后，同步重建技术文章与内链（避免被覆盖丢失）
+    try:
+        import build_insights
+        print("\n同步技术文章（Insights）...")
+        build_insights.main()
+    except Exception as e:
+        print(f"[!] 技术文章生成跳过：{e}")
+
 
 if __name__ == "__main__":
     main()
