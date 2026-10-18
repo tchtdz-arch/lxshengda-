@@ -65,10 +65,12 @@ if(inquiryForm){
     var msg=document.getElementById('fMsg').value.trim();
     var body='客户称呼：'+name+'\n公司名称：'+company+'\n联系电话：'+phone+'\n电子邮箱：'+email+'\n咨询产品：'+product+'\n需求描述：'+msg;
     var subject='网站询价 - '+name+' - '+product;
-    window.location.href='mailto:tchtdz@163.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    // 英文站用 Gmail（海外送达率好），中文站用 163
+    var mailTo = (typeof window!=='undefined' && window.LX_FORCE_LANG==='en') ? 'tchtdz@gmail.com' : 'tchtdz@163.com';
+    window.location.href='mailto:'+mailTo+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
     alert(currentLang==='en'
-      ? 'An inquiry email has been prepared. If your email client does not open automatically, please send it manually to tchtdz@163.com.'
-      : '已为您生成询价邮件，如未自动调起邮箱客户端，请手动发送至 tchtdz@163.com。');
+      ? 'An inquiry email has been prepared. If your email client does not open automatically, please send it manually to '+mailTo+'.'
+      : '已为您生成询价邮件，如未自动调起邮箱客户端，请手动发送至 '+mailTo+'。');
   });
 }
 
