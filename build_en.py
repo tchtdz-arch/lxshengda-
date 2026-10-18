@@ -94,6 +94,59 @@ LD_MANUAL = {
 }
 
 
+ALT_MAP = {
+    "郎溪胜达锻造": "Langxi Shengda Forging",
+    "证书大图": "Certificate (full size)",
+    "大图": "Full size image",
+    "ISO 9001 证书": "ISO 9001 Certificate",
+    "ISO 14001 证书": "ISO 14001 Certificate",
+    "ISO 45001 证书": "ISO 45001 Certificate",
+    "专精特新中小企业证书": "Specialized and Innovative SME Certificate",
+    "高新技术企业证书": "High-Tech Enterprise Certificate",
+    "宝武特冶授权证书": "Baowu Special Metallurgy authorized dealer certificate",
+    "宝武特冶授权证明 - 上海禹鸿为宝武特种冶金有限公司圆棒协议用户":
+        "Baowu Special Metallurgy authorization — Shanghai Yuhong is a contracted round bar user of Baowu Special Metallurgy Co., Ltd.",
+    "宝武特冶授权证明 · 上海禹鸿为宝武特种冶金有限公司圆棒协议用户":
+        "Baowu Special Metallurgy authorization — Shanghai Yuhong is a contracted round bar user of Baowu Special Metallurgy Co., Ltd.",
+    "H13 及相关锻件产品图鉴": "H13 and related forging product gallery",
+    "不锈钢锻件及多牌号锻件图鉴": "Stainless steel and multi-grade forging gallery",
+    "公司部分产品图鉴：轧辊、H13 异形锻件、Cr12MoV 环形锻件、不锈钢锻件、筒形锻件、D2 锻件、刀体、三通、轴类、曲轴等":
+        "Selected product gallery: rolls, H13 profile forgings, Cr12MoV ring forgings, stainless steel forgings, barrel forgings, D2 forgings, cutter bodies, tees, shafts, crankshafts, etc.",
+    "各类锻件产品图鉴：轴类、环形、饼类、模块等":
+        "Forging product gallery: shafts, rings, discs, blocks, etc.",
+    "力学检测室": "Mechanical testing laboratory",
+    "电子万能试验机": "Electronic universal testing machine",
+    "电子万能试验机力学性能检测":
+        "Mechanical property testing on electronic universal testing machine",
+    "电子万能试验机拉伸试验 · H13 力学性能检测":
+        "Tensile test on electronic universal testing machine — H13 mechanical properties",
+    "金属摆锤冲击试验机": "Metal pendulum impact testing machine",
+    "直读光谱仪": "Optical emission spectrometer",
+    "直读光谱仪化学成分检测 · 宝钢 H13":
+        "Chemical composition analysis by OES — Baosteel H13",
+    "直读光谱仪成分检测": "Chemical composition analysis by OES",
+    "疲劳测试报告 · 试样 10⁷ 周次通过": "Fatigue test report — specimen passed 10⁷ cycles",
+    "疲劳试验报告 · 应力控制疲劳试验结果（GB/T 3075-2021）":
+        "Fatigue test report — stress-controlled results (GB/T 3075-2021)",
+    "大口径液压油缸筒体成品": "Large-diameter hydraulic cylinder barrel (finished)",
+    "大口径液压油缸筒体锻件 - 锻造调质后粗加工态":
+        "Large-diameter hydraulic cylinder barrel forging — rough machined after forging and Q&T",
+    "挤压筒内衬锻件": "Extrusion container liner forging",
+    "热作模具模块锻件": "Hot-work die block forging",
+    "热作模具钢锻件 - 热锻模挤压模块坯料":
+        "Hot-work die steel forging — blank for hot forging die / extrusion block",
+    "石油管汇锻件 - 方三通方四通": "Oil & gas manifold forgings — square tees and crosses",
+    "石油管汇锻件 - 方三通方四通方块锻件": "Oil & gas manifold forgings — square tee/cross blocks",
+    "石油管汇锻件 - 转接头": "Oil & gas manifold forging — adapter",
+    "石油管汇锻件 - 转接头锻件": "Oil & gas manifold forging — adapter forging",
+    "精密加工锻件": "Precision machined forging",
+    "锻件粗加工态": "Forging in rough machined condition",
+    "飞轮储能转子体": "Flywheel energy storage rotor body",
+    "飞轮储能转子整机 - 含阶梯轴": "Flywheel energy storage rotor assembly — with stepped shaft",
+    "飞轮储能转子整机（含阶梯轴）": "Flywheel energy storage rotor assembly (with stepped shaft)",
+}
+
+
 def build(page):
     src = io.open(os.path.join(HERE, page), encoding="utf-8").read()
     soup = BeautifulSoup(src, "html.parser")
@@ -231,6 +284,14 @@ def build(page):
     for s_ in soup.find_all("script", attrs={"type": "application/ld+json"}):
         if s_.string and "Xuancheng" in s_.string and "China" not in s_.string:
             s_.string = s_.string.replace('"安徽省"', '"Anhui, China"')
+
+    # ---------- 11.8 图片 alt 英文化 ----------
+    n_alt = 0
+    for img in soup.find_all("img"):
+        a = img.get("alt")
+        if a and a.strip() in ALT_MAP:
+            img["alt"] = ALT_MAP[a.strip()]
+            n_alt += 1
 
     html = str(soup)
 
