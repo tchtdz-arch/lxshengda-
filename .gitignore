@@ -8,3 +8,12 @@ baidu_token.txt
 # 图片压缩原始备份
 .logo_bak/
 .img_bak/
+
+# 百度推送待补推清单与日志（运行时生成）
+pending.txt
+push.log
+
+# 360 推送 token 与运行时文件
+360_token.txt
+pending360.txt
+push360.log
