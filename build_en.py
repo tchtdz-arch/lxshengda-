@@ -15,7 +15,7 @@
   - 根级静态资源路径修正为 ../
   - 语言切换按钮改为「中文」链接（链回中文站）
 """
-import os, re, io, glob
+import os, re, io, glob, json
 from bs4 import BeautifulSoup, NavigableString
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -47,9 +47,68 @@ def needs_up(v):
     return v.lower().endswith(ASSET_EXT)
 
 
+# JSON-LD 专用中英对照（页面 data-zh/data-en 覆盖不到的名称、地名等）
+LD_MANUAL = {
+    "郎溪胜达锻造有限公司": "Langxi Shengda Forging Co., Ltd.",
+    "郎溪胜达锻造": "Langxi Shengda Forging",
+    "郎溪胜达锻造 / 上海禹鸿": "Langxi Shengda Forging / Shanghai Yuhong",
+    "上海禹鸿模具材料有限公司": "Shanghai Yuhong Die Material Co., Ltd.",
+    "郎溪胜达锻造产品系列": "Langxi Shengda Forging Product Range",
+    "经济开发区索埂路 10 号": "No. 10 Suogeng Road, Langxi Economic Development Zone",
+    "宣城市郎溪县": "Langxi County, Xuancheng",
+    "安徽省": "Anhui, China",
+    "模具钢 / 工模具钢": "Die Steel / Tool & Die Steel",
+    "锻件 / 飞轮储能转子": "Forgings / Flywheel Energy Storage Rotors",
+    "模具钢 H13（宝钢）": "H13 Die Steel (Baosteel)",
+    "H13 模具钢（宝钢）": "H13 Die Steel (Baosteel)",
+    "油缸筒体（液压缸筒）": "Hydraulic Cylinder Barrels",
+    "不锈钢锻件": "Stainless Steel Forgings",
+    "各类锻件（定制）": "Custom Forgings",
+    "热作模具锻件（热锻模 / 挤压模块 / 内衬 / 型材挤压模 / 挤压杆）":
+        "Hot-Work Die Forgings (Hot Forging Dies / Extrusion Blocks / Liners / Profile Extrusion Dies / Extrusion Stems)",
+    "石油锻件（转接头 / 方三通 / 方四通）":
+        "Oil & Gas Forgings (Adapters / Square Tees / Square Crosses)",
+    # 以下 6 条只存在于结构化数据中，页面正文无对应 data-en，需单独翻译
+    "飞轮储能转子锻件、模具钢 H13、各类锻件专业厂家，锻造、热处理、精密加工一体化供应。":
+        "Specialized manufacturer of flywheel energy storage rotor forgings, H13 die steel and various "
+        "forgings, providing integrated forging, heat treatment and precision machining.",
+    "大口径液压油缸筒体锻件，锻造成型 + 调质热处理，组织致密、壁厚均匀，配套化学成分、力学性能与 UT 探伤检测，可按图定制。":
+        "Large-diameter hydraulic cylinder barrel forgings, forged and quench-and-tempered for dense "
+        "structure and uniform wall thickness, supplied with chemical composition, mechanical property "
+        "and UT inspection reports; custom-made to drawings.",
+    "轴类、环形、饼类、模块等定制锻件，按客户图纸锻造、热处理与精加工，支持合金钢、不锈钢多牌号。":
+        "Custom forgings including shafts, rings, discs and blocks, forged, heat-treated and precision "
+        "machined to customer drawings, available in a wide range of alloy and stainless steel grades.",
+    "宝钢 H13 热作模具钢（对应国标 4Cr5MoSiV1、日标 SKD61、德标 1.2344），供应退火态圆钢、锻件及热处理态产品，配套 NADCA #207 / SEP 1614 / VDG ASA 金相检验与 GB/T 228.1-2021 力学性能检测，UT 探伤、报告随货。":
+        "Baosteel H13 hot-work die steel (4Cr5MoSiV1 in GB, SKD61 in JIS, 1.2344 in DIN), supplied as "
+        "annealed round bars, forgings and heat-treated products, with metallographic examination to "
+        "NADCA #207 / SEP 1614 / VDG ASA and mechanical testing to GB/T 228.1-2021, UT inspection and "
+        "reports supplied with each shipment.",
+    "4130（30CrMo）合金结构钢石油管汇锻件，主营转接头、方三通、方四通等高压承压锻件，锻造 + 调质热处理，配套化学成分、力学性能与 UT 探伤检测，可按图定制。":
+        "4130 (30CrMo) alloy steel oil & gas manifold forgings, specializing in adapters, square tees and "
+        "square crosses for high-pressure service, forged and quench-and-tempered, with chemical "
+        "composition, mechanical property and UT inspection reports; custom-made to drawings.",
+    "耐腐蚀高强度不锈钢锻件，覆盖 2Cr13 等马氏体及奥氏体不锈钢，按图定制锻造、热处理与精加工。":
+        "Corrosion-resistant high-strength stainless steel forgings covering 2Cr13 and other martensitic "
+        "and austenitic grades, custom forged, heat-treated and precision machined to drawings.",
+}
+
+
 def build(page):
     src = io.open(os.path.join(HERE, page), encoding="utf-8").read()
     soup = BeautifulSoup(src, "html.parser")
+
+    # ---------- 0. 从 data-zh/data-en 配对建立「中→英」词典 ----------
+    # 用于把 JSON-LD 里的中文文案自动换成页面上已有的英文，无需人工翻译
+    zh2en = {}
+    for el in soup.find_all(attrs={"data-zh": True}):
+        zh, en = el.get("data-zh"), el.get("data-en")
+        if not zh or not en:
+            continue
+        zh_txt = BeautifulSoup(zh, "html.parser").get_text(" ", strip=True)
+        en_txt = BeautifulSoup(en, "html.parser").get_text(" ", strip=True)
+        if zh_txt and en_txt and zh_txt != en_txt:
+            zh2en[zh_txt] = en_txt
 
     # ---------- 1. html lang ----------
     if soup.html:
@@ -178,11 +237,53 @@ def build(page):
     # ---------- 11.6 海外习惯：英文站邮箱统一用 Gmail（送达率优于 163） ----------
     html = html.replace("tchtdz@163.com", "tchtdz@gmail.com")
 
+    # ---------- 11.7 JSON-LD 英文化：用页面已有的 data-zh/data-en 配对自动翻译 ----------
+    n_ld_fixed = [0]
+    for s_ in soup.find_all("script", attrs={"type": "application/ld+json"}):
+        if not s_.string:
+            continue
+        try:
+            data = json.loads(s_.string)
+        except Exception:
+            continue
+
+        def walk(o):
+            if isinstance(o, dict):
+                return {k: walk(v) for k, v in o.items()}
+            if isinstance(o, list):
+                return [walk(v) for v in o]
+            if isinstance(o, str):
+                v = o.strip()
+                if v in LD_MANUAL:
+                    n_ld_fixed[0] += 1
+                    return LD_MANUAL[v]
+                if v in zh2en:
+                    n_ld_fixed[0] += 1
+                    return zh2en[v]
+                # 长描述：与页面文案按前缀模糊匹配（JSON-LD 里常有截断或小改动）
+                if len(v) >= 20 and re.search(r"[\u4e00-\u9fff]", v):
+                    for k, val in zh2en.items():
+                        if len(k) >= 20 and (k.startswith(v[:20]) or v.startswith(k[:20])):
+                            n_ld_fixed[0] += 1
+                            return val
+                # 「中文 / English」双语写法 → 取英文半边
+                m = re.match(r"^(.+?)\s*/\s*([A-Za-z0-9 ,.\-&()'/]+)$", v)
+                if m and re.search(r"[\u4e00-\u9fff]", m.group(1)):
+                    n_ld_fixed[0] += 1
+                    return m.group(2)
+                return o
+            return o
+
+        new_data = walk(data)
+        s_.string = json.dumps(new_data, ensure_ascii=False, indent=2)
+
+    html = str(soup)
+
     # ---------- 12. onclick 里的图片路径 ----------
     html = re.sub(r"openLightbox\('(?!\.\./|http)([^']+\.(?:webp|jpg|jpeg|png|gif))'",
                   r"openLightbox('../\1'", html)
 
-    return html, dict(text=n_text, ph=n_ph, up=n_up, ld=n_ld)
+    return html, dict(text=n_text, ph=n_ph, up=n_up, ld=n_ld, ldfix=n_ld_fixed[0])
 
 
 def main():
@@ -196,7 +297,7 @@ def main():
         out = os.path.join(EN_DIR, page)
         io.open(out, "w", encoding="utf-8", newline="").write(html)
         total += 1
-        print(f"  {page:26s} 正文{st['text']:3d}  占位{st['ph']:2d}  路径{st['up']:3d}  LD{st['ld']}")
+        print(f"  {page:26s} 正文{st['text']:3d}  占位{st['ph']:2d}  路径{st['up']:3d}  LD{st['ld']} LD英化{st['ldfix']}")
     print(f"\n完成：{total} 个英文页 -> {EN_DIR}")
 
 
