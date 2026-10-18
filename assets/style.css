@@ -314,3 +314,20 @@
 .rel-grid .portal-card{padding:22px 20px}
 @media(max-width:960px){.adv-grid{grid-template-columns:1fr 1fr}.rel-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.adv-grid{grid-template-columns:1fr}.rel-grid{grid-template-columns:1fr}.keynote{padding:20px}}
+
+/* ===== 英文站排版（海外阅读习惯）===== */
+html[lang="en"] body{
+  font-family:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+  letter-spacing:.005em;
+  line-height:1.75;
+}
+html[lang="en"] h1,html[lang="en"] h2,html[lang="en"] h3,html[lang="en"] h4{
+  letter-spacing:-.012em;
+  line-height:1.28;
+  font-weight:700;
+}
+html[lang="en"] p,html[lang="en"] li{line-height:1.8}
+html[lang="en"] .lead{font-size:17px;line-height:1.8}
+html[lang="en"] .chip,html[lang="en"] .kg{letter-spacing:.01em}
+html[lang="en"] table{font-variant-numeric:tabular-nums}
+html[lang="en"] .f-line{font-size:13px}

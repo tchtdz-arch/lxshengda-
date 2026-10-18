@@ -1,5 +1,9 @@
 // ===== 中英文切换 =====
-var currentLang = (function(){try{return localStorage.getItem('lang')||'zh';}catch(e){return 'zh';}})();
+// 英文站（/en/）通过 window.LX_FORCE_LANG 锁定为英文，不受 localStorage 影响
+var currentLang = (function(){
+  if(typeof window!=='undefined' && window.LX_FORCE_LANG) return window.LX_FORCE_LANG;
+  try{return localStorage.getItem('lang')||'zh';}catch(e){return 'zh';}
+})();
 function applyLang(lang){
   currentLang = lang;
   try{localStorage.setItem('lang',lang);}catch(e){}
@@ -35,7 +39,8 @@ function applyLang(lang){
   document.querySelectorAll('#year').forEach(function(s){s.textContent=y;});
 }
 var langToggleEl = document.getElementById('langToggle');
-if(langToggleEl){
+// 英文站的「中文」是跳转链接，不再做原地切换
+if(langToggleEl && !window.LX_FORCE_LANG){
   langToggleEl.addEventListener('click',function(){
     applyLang(currentLang==='zh'?'en':'zh');
   });

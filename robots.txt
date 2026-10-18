@@ -30,4 +30,5 @@ User-agent: YisouSpider
 Allow: /
 
 Sitemap: https://www.lxshengda.com/sitemap.xml
+Sitemap: https://www.lxshengda.com/sitemap_en.xml
 Sitemap: https://www.lxshengda.com/sitemap.html
