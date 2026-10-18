@@ -7,3 +7,4 @@ baidu_token.txt
 
 # 图片压缩原始备份
 .logo_bak/
+.img_bak/
