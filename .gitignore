@@ -17,3 +17,10 @@ push.log
 360_token.txt
 pending360.txt
 push360.log
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 本地自动化临时文件
+.playwright-cli/

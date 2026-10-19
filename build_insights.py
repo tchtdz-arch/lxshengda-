@@ -485,6 +485,14 @@ def main():
     inject_further_reading()
     update_sitemap()
 
+    # 刷新 style.css / main.js 的引用版本号（cache busting），保证样式改动立即生效
+    try:
+        import bump_assets
+        bump_assets.bump(verbose=False)
+        print("  资源版本号: 已刷新")
+    except Exception as e:
+        print(f"[!] 版本号刷新跳过：{e}")
+
 
 if __name__ == "__main__":
     main()

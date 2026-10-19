@@ -369,6 +369,14 @@ def main():
     except Exception as e:
         print(f"[!] 技术文章生成跳过：{e}")
 
+    # 兜底：再刷一次资源版本号，避免 insights 生成失败时旧版本号残留
+    try:
+        import bump_assets
+        bump_assets.bump(verbose=False)
+        print("  资源版本号: 已刷新")
+    except Exception as e:
+        print(f"[!] 版本号刷新跳过：{e}")
+
 
 if __name__ == "__main__":
     main()
