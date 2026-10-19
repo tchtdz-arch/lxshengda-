@@ -257,6 +257,13 @@ ARTICLES = [
 },
 ]
 
+# 第二批文章（材质选型 / 油缸 / 锻造比 / 酸性工况）
+try:
+    from articles_extra import ARTICLES_EXTRA
+    ARTICLES.extend(ARTICLES_EXTRA)
+except Exception as _e:  # pragma: no cover
+    print("  [!] 第二批文章加载失败:", _e)
+
 
 def load_shell():
     """从现有英文页提取 header / footer / lightbox / scripts，保证导航与页脚一致"""
