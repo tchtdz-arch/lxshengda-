@@ -272,7 +272,10 @@ def load_shell():
     footer = re.search(r"<footer class=\"site-footer\">.*?</footer>", src, re.S).group(0)
     lightbox = re.search(r"<div class=\"lightbox\" id=\"certLightbox\".*?</div>\s*</div>", src, re.S)
     lightbox = lightbox.group(0) if lightbox else ""
-    scripts = re.search(r"<script>window\.LX_FORCE_LANG.*?</script>\s*<script src=\"\.\./assets/main\.js\"></script>", src, re.S).group(0)
+    scripts = re.search(r"<script>window\.LX_FORCE_LANG.*?</script>\s*<script src=\"\.\./assets/main\.js(?:\?v=[0-9a-fA-F]+)?\"></script>", src, re.S).group(0)
+    # 文章页位于 en/insights/ 子目录，资源路径要在 tech.html 的基础上再上提一级，
+    # 否则 src="../assets/main.js" 会被解析成 en/assets/main.js（404）
+    scripts = re.sub(r'src="\.\./assets/', 'src="../../assets/', scripts)
 
     # 文章位于 en/insights/ 子目录，页头页脚中的同级链接需要上提一级
     import re as _re

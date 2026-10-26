@@ -96,6 +96,7 @@ LD_MANUAL = {
 
 ALT_MAP = {
     "郎溪胜达锻造": "Langxi Shengda Forging",
+    "宝钢 H13 模具钢圆钢常备库存 · 车间实拍": "Baosteel H13 die steel round bars in ready stock — workshop photo",
     "证书大图": "Certificate (full size)",
     "大图": "Full size image",
     "ISO 9001 证书": "ISO 9001 Certificate",
@@ -261,7 +262,8 @@ def build(page):
         a.string = "中文版"
 
     # ---------- 11. 强制英文（放在 main.js 之前） ----------
-    mjs = soup.find("script", attrs={"src": re.compile(r"assets/main\.js$")})
+    # 注意：src 可能带 ?v=xxxx 版本号（cache busting），正则需兼容查询串
+    mjs = soup.find("script", attrs={"src": re.compile(r"assets/main\.js(?:\?v=[0-9a-fA-F]+)?$")})
     if mjs:
         force = soup.new_tag("script")
         force.string = "window.LX_FORCE_LANG='en';"
