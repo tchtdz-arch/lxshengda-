@@ -205,8 +205,13 @@ def build(page):
         m["content"] = "zh_CN"
 
     # ---------- 6. canonical / og:url ----------
-    en_url = f"{SITE}/en/{page}"
-    zh_url = f"{SITE}/{page}"
+    # 首页统一用目录式 URL（/ 与 /en/），避免与 /index.html、/en/index.html 形成重复网页
+    if page == "index.html":
+        en_url = f"{SITE}/en/"
+        zh_url = f"{SITE}/"
+    else:
+        en_url = f"{SITE}/en/{page}"
+        zh_url = f"{SITE}/{page}"
     c = soup.find("link", attrs={"rel": "canonical"})
     if c:
         c["href"] = en_url
@@ -243,7 +248,7 @@ def build(page):
         a = soup.new_tag("a")
         a["class"] = btn.get("class", ["lang-switch"])
         a["id"] = "langToggle"
-        a["href"] = "../index.html"
+        a["href"] = "../"
         a.string = "中文"
         btn.replace_with(a)
 

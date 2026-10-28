@@ -265,8 +265,12 @@ except Exception as _e:  # pragma: no cover
     print("  [!] 第二批文章加载失败:", _e)
 
 
-def load_shell():
-    """从现有英文页提取 header / footer / lightbox / scripts，保证导航与页脚一致"""
+def load_shell(deeper=True):
+    """从现有英文页提取 header / footer / lightbox / scripts，保证导航与页脚一致
+
+    deeper=True  用于 en/insights/ 下的文章页（比 en/ 深一级，链接需再上提）
+    deeper=False 用于 en/insights.html 列表页（与 en/tech.html 同级，链接保持原样）
+    """
     src = io.open(os.path.join(EN, "tech.html"), encoding="utf-8").read()
     header = re.search(r"<header class=\"site-header\">.*?</header>", src, re.S).group(0)
     footer = re.search(r"<footer class=\"site-footer\">.*?</footer>", src, re.S).group(0)
@@ -280,10 +284,16 @@ def load_shell():
     # 文章位于 en/insights/ 子目录，页头页脚中的同级链接需要上提一级
     import re as _re
     def up(frag):
+        # 首页链接写成目录式 "./"（英文站首页），文章页深一层要变成 "../"
+        frag = frag.replace('href="./"', 'href="../"')
+        # 已在 en/ 上提过一级的静态资源（如 src="../logo.webp"）要再上提一级，
+        # 否则文章页会去请求 en/logo.webp（404）
+        frag = _re.sub(r'src="\.\./(?!/)', r'src="../../', frag)
         frag = _re.sub(r'href="(?!#|https?:|mailto:|tel:|\.\./)([^"]+)"', r'href="../\1"', frag)
         frag = _re.sub(r'src="(?!#|https?:|\.\./)([^"]+)"', r'src="../\1"', frag)
         return frag
-    header, footer, lightbox = up(header), up(footer), up(lightbox)
+    if deeper:
+        header, footer, lightbox = up(header), up(footer), up(lightbox)
     return header, footer, lightbox, scripts
 
 
@@ -477,12 +487,14 @@ def update_sitemap():
 
 def main():
     os.makedirs(OUT, exist_ok=True)
-    header, footer, lightbox, scripts = load_shell()
+    header, footer, lightbox, scripts = load_shell(deeper=True)
     for a in ARTICLES:
         html = build_article(a, header, footer, lightbox, scripts)
         io.open(os.path.join(OUT, a["slug"] + ".html"), "w", encoding="utf-8", newline="").write(html)
         print(f"  文章: insights/{a['slug']}.html  ({len(html)} 字节)")
-    hub = build_hub(header, footer, lightbox, scripts)
+    # 列表页与 en/tech.html 同级，链接不能上提（否则导航全部指向中文页）
+    hub_header, hub_footer, hub_lightbox, hub_scripts = load_shell(deeper=False)
+    hub = build_hub(hub_header, hub_footer, hub_lightbox, hub_scripts)
     io.open(os.path.join(EN, "insights.html"), "w", encoding="utf-8", newline="").write(hub)
     print(f"  列表页: insights.html ({len(hub)} 字节)")
     inject_further_reading()

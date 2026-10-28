@@ -24,3 +24,6 @@ __pycache__/
 
 # 本地自动化临时文件
 .playwright-cli/
+
+# 本地临时脚本/截图
+.tmp/
