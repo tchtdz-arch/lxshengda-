@@ -1,0 +1,32 @@
+# Langxi Shengda Forging Co., Ltd.
+
+> Chinese forging manufacturer in Xuancheng, Anhui. Forging, heat treatment and precision machining under one roof. Core products: H13 die steel (DIN 1.2344 / JIS SKD61, authorised round-bar user of Baowu Special Metallurgy), flywheel energy storage rotor forgings (centre-sample fatigue tested to 10 million cycles, UT inspected piece by piece), hot-work die forgings (5CrNiMo / 5CrNi2MoV), oil & gas manifold forgings (4130 / 30CrMo), hydraulic cylinder barrels (27SiMn / 35CrMo / 42CrMo / 45#) and stainless / custom forgings (2Cr13 / AISI 420). ISO 9001:2015, ISO 14001:2015, ISO 45001:2018. Chemical, mechanical and UT reports ship with every lot.
+
+Site: https://www.lxshengda.com/
+English site: https://www.lxshengda.com/en/
+Contact: sales@lxshengda.com · +86 177 5634 3718 · +86 189 3064 6778 (WeChat)
+Location: Langxi Economic Development Zone, Xuancheng, Anhui, China (sales office in Songjiang, Shanghai)
+
+## Key pages (English)
+
+- [Home](https://www.lxshengda.com/en/): Company overview, product lines, certifications
+- [Products](https://www.lxshengda.com/en/products.html): Full product range with grade cross references (GB vs DIN/EN, JIS, AISI/ASTM)
+- [H13 Die Steel](https://www.lxshengda.com/en/h13.html): Annealed bars, forgings and heat-treated blocks; Baowu Special Metallurgy authorised user
+- [Flywheel Rotor Forgings](https://www.lxshengda.com/en/flywheel-rotor.html): Series-supplied to leading Chinese flywheel manufacturers; fatigue and UT test route
+- [Hot-Work Die Forgings](https://www.lxshengda.com/en/hot-work-dies.html): H13, 5CrNiMo (1.2713/SKT4), 5CrNi2MoV; spheroidize annealed
+- [Oil & Gas Forgings](https://www.lxshengda.com/en/oil-forgings.html): 4130/30CrMo adapters, square tees and crosses
+- [Hydraulic Cylinder Barrels](https://www.lxshengda.com/en/cylinder-barrel.html): 27SiMn, 35CrMo, 42CrMo, 45#, quench-and-tempered
+- [Stainless & Custom Forgings](https://www.lxshengda.com/en/stainless-forging.html): 2Cr13 (AISI 420 / DIN 1.4021) and to-drawing parts
+- [Certifications](https://www.lxshengda.com/en/certification.html): ISO 9001/14001/45001, high-tech enterprise credentials
+- [Cases](https://www.lxshengda.com/en/cases.html): Application and delivery records
+
+## Technical notes (English)
+
+- [H13 vs 1.2344 vs SKD61 — Grade Equivalence Guide](https://www.lxshengda.com/en/insights/h13-vs-1-2344-vs-skd61.html): H13 = DIN 1.2344 = JIS SKD61; composition and application notes
+- [Reading a Chinese Mill Certificate](https://www.lxshengda.com/en/insights/reading-chinese-mill-certificate.html): GB grades mapped to DIN/EN, JIS, AISI/ASTM; what each certificate line means
+- [UT Acceptance Criteria for Forgings](https://www.lxshengda.com/en/insights/ut-acceptance-criteria-forgings.html): GB/T 6402 vs ASTM A388, EN 10228-3, JIS G 0587; acceptance levels
+- [Forged vs Cast Flywheel Rotor](https://www.lxshengda.com/en/insights/forged-vs-cast-flywheel-rotor.html): Fatigue life comparison, why forging wins for rotors
+- [Forging Ratio and Internal Quality](https://www.lxshengda.com/en/insights/forging-ratio-and-internal-quality.html): What a 3:1 reduction does and does not guarantee
+- [5CrNiMo vs 5CrNi2MoV vs H13](https://www.lxshengda.com/en/insights/5crnimo-vs-5crni2mov-vs-h13.html): Hot-work die material selection
+- [Hydraulic Cylinder Barrel Materials](https://www.lxshengda.com/en/insights/hydraulic-cylinder-barrel-forging-materials.html): 27SiMn vs E355
+- [Sour Service Forgings (NACE MR0175)](https://www.lxshengda.com/en/insights/sour-service-forgings-nace-mr0175.html): Requirements for H2S service
