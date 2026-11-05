@@ -22,6 +22,43 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 EN_DIR = os.path.join(HERE, "en")
 SITE = "https://www.lxshengda.com"
 
+# 英文页 meta keywords（按页定制；未列出的页面用默认组）
+EN_KEYWORDS_DEFAULT = ("forging manufacturer China, custom forgings, H13 tool steel, "
+                       "1.2344 die steel, flywheel energy storage rotor forging, heat treatment, "
+                       "precision machining, forging supplier, die steel supplier, Anhui forging factory")
+EN_KEYWORDS = {
+    "index.html": EN_KEYWORDS_DEFAULT,
+    "products.html": ("H13 tool steel, forged parts, flywheel rotor forgings, hot work die steel, "
+                      "oil and gas forgings, hydraulic cylinder barrel, stainless forgings, "
+                      "steel grade cross reference, forging manufacturer China"),
+    "h13.html": ("H13 tool steel, 1.2344, SKD61, H13 forgings, H13 round bar, H13 blocks, "
+                 "hot work tool steel, Baowu H13, H13 die steel supplier China, "
+                 "annealed H13 bar, NADCA 207"),
+    "flywheel-rotor.html": ("flywheel rotor forging, flywheel energy storage, rotor forgings, "
+                            "25Cr2Ni4MoV, forged flywheel rotor, high cycle fatigue testing, "
+                            "UT inspected forgings, energy storage flywheel supplier"),
+    "hot-work-dies.html": ("hot work die steel, 5CrNiMo, 5CrNi2MoV, 1.2713, H13 die blocks, "
+                           "forged die inserts, hot forging dies, spheroidize annealed"),
+    "oil-forgings.html": ("oil and gas forgings, 4130 forgings, 30CrMo, manifold forgings, "
+                          "flowline fittings, forged tees and crosses, petroleum forgings"),
+    "cylinder-barrel.html": ("hydraulic cylinder barrel, 27SiMn tube, 35CrMo, 42CrMo cylinder, "
+                             "quench and tempered barrel, honed tube forging, cylinder sleeve forging"),
+    "stainless-forging.html": ("stainless steel forgings, 2Cr13, AISI 420, 1.4021, martensitic "
+                               "stainless forging, custom forged parts"),
+    "forgings.html": ("custom forgings, shaft forgings, ring forgings, disc forgings, die blocks, "
+                      "42CrMo forgings, 4140 forgings, 40Cr, 35CrMo, open die forging, closed die forging"),
+    "about.html": ("forging company China, heat treatment plant, precision machining factory, "
+                   "ISO 9001 forging supplier, Anhui forging manufacturer"),
+    "tech.html": ("forging technology, heat treatment capability, UT inspection, mechanical testing, "
+                  "metallographic examination, forging quality control"),
+    "certification.html": ("ISO 9001 forging company, ISO 14001, ISO 45001, certified forging supplier, "
+                           "high-tech enterprise"),
+    "cases.html": ("forging cases, flywheel rotor delivery, die steel supply record, "
+                   "forging application, OEM forgings"),
+    "contact.html": ("contact forging supplier, H13 steel enquiry, custom forging quote, "
+                     "forging manufacturer contact"),
+}
+
 # 需要跳过的非页面文件
 SKIP = {"404.html", "baidu_verify_codeva-cIOc4y6zQh.html", "google7fb949e9a0e3fcea.html"}
 
@@ -197,6 +234,17 @@ def build(page):
     d = soup.find("meta", attrs={"name": "description"})
     if d and d.get("data-en"):
         d["content"] = d["data-en"]
+
+    # ---------- 4b. meta keywords（英文页替换为英文关键词）----------
+    k = soup.find("meta", attrs={"name": "keywords"})
+    en_kw = EN_KEYWORDS.get(page, EN_KEYWORDS_DEFAULT)
+    if k:
+        k["content"] = en_kw
+    elif soup.head:
+        ktag = soup.new_tag("meta")
+        ktag.attrs["name"] = "keywords"
+        ktag.attrs["content"] = en_kw
+        soup.head.append(ktag)
 
     # ---------- 5. og:locale 互换 ----------
     for m in soup.find_all("meta", attrs={"property": "og:locale"}):
