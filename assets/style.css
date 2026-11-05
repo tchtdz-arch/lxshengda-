@@ -258,6 +258,11 @@
   footer.site-footer .f-beian{margin-top:10px;padding-top:10px;border-top:1px solid rgba(143,163,184,.18);font-size:12px;opacity:.82}
   footer.site-footer .f-beian a{color:#8fa3b8;text-decoration:none}
   footer.site-footer .f-beian a:hover{color:#c8d5e2}
+  footer.site-footer .f-social{margin:14px 0 10px;display:flex;justify-content:center;gap:12px}
+  footer.site-footer .f-social a{display:inline-flex;width:36px;height:36px;border-radius:50%;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border:1px solid rgba(143,163,184,.28);transition:background .2s,border-color .2s,transform .2s}
+  footer.site-footer .f-social a:hover{background:#E8590C;border-color:#E8590C;transform:translateY(-2px)}
+  footer.site-footer .f-social svg{width:18px;height:18px;fill:#c8d5e2;display:block;transition:fill .2s}
+  footer.site-footer .f-social a:hover svg{fill:#fff}
 
   /* ===== 响应式 ===== */
   @media(max-width:960px){
