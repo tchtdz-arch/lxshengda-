@@ -217,6 +217,13 @@ def build(page):
             el.append(c.extract())
         n_text += 1
 
+    # ---------- 2b. data-en-href：链接按语言分别指向对应页面 ----------
+    # 用于「延伸阅读」这类中英文章 slug 不同的内链，避免英文页里出现中文 slug 死链
+    n_href = 0
+    for el in soup.find_all(attrs={"data-en-href": True}):
+        el["href"] = el["data-en-href"]
+        n_href += 1
+
     # placeholder
     n_ph = 0
     for el in soup.find_all(attrs={"data-zh-ph": True}):

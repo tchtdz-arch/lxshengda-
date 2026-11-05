@@ -30,3 +30,15 @@ Location: Langxi Economic Development Zone, Xuancheng, Anhui, China (sales offic
 - [5CrNiMo vs 5CrNi2MoV vs H13](https://www.lxshengda.com/en/insights/5crnimo-vs-5crni2mov-vs-h13.html): Hot-work die material selection
 - [Hydraulic Cylinder Barrel Materials](https://www.lxshengda.com/en/insights/hydraulic-cylinder-barrel-forging-materials.html): 27SiMn vs E355
 - [Sour Service Forgings (NACE MR0175)](https://www.lxshengda.com/en/insights/sour-service-forgings-nace-mr0175.html): Requirements for H2S service
+
+## 中文页面（Chinese）
+
+- [首页](https://www.lxshengda.com/): 公司概况、五大产品线、资质与联系方式
+- [产品介绍](https://www.lxshengda.com/products.html): 产品总览与锻件图鉴，含 GB 与 DIN/EN、JIS、AISI/ASTM 牌号对照
+- [技术实力](https://www.lxshengda.com/tech.html): 锻造、调质热处理、UT 超声波探伤、力学性能与金相检验能力
+- [资质认证](https://www.lxshengda.com/certification.html): ISO 9001:2015 / ISO 14001:2015 / ISO 45001:2018
+- [技术文章](https://www.lxshengda.com/insights.html): 面向锻件采购与工艺工程师的技术说明
+  - [H13、1.2344、SKD61 是同一种钢吗](https://www.lxshengda.com/insights/h13-1-2344-skd61-difference.html): 四套标准成分对照与选材要点
+  - [飞轮储能转子：锻件还是铸件](https://www.lxshengda.com/insights/flywheel-rotor-forged-vs-cast.html): 失效机理、检测可达性与批间一致性
+  - [锻造比是什么，对锻件内部质量有什么影响](https://www.lxshengda.com/insights/forging-ratio-and-internal-quality.html): 定义、作用机理与合同约定方式
+  - [锻件超声波探伤验收标准怎么定](https://www.lxshengda.com/insights/ut-acceptance-criteria.html): GB/T 6402、ASTM A388、EN 10228-3、JIS G 0587 对比

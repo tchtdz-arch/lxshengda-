@@ -444,30 +444,33 @@ def build_hub(header, footer, lightbox, scripts):
 
 
 def inject_further_reading():
-    """在 en/products.html 与 en/tech.html 注入内链区块（幂等）"""
+    """在 en/products.html 与 en/tech.html 注入内链区块（幂等）
+
+    区块包在 <section class="fr-band"><div class="container"> 内，
+    否则会横跨视口宽度并贴到屏幕左边缘（footer 前裸插的老问题）。
+    """
     links = "".join(f'<li><a href="insights/{a["slug"]}.html">{a["title"]}</a></li>\n' for a in ARTICLES)
-    block = f"""<div class="further-reading">
+    block = f"""<section class="fr-band"><div class="container">
+<div class="further-reading">
 <h3>Further reading</h3>
 <ul>
 {links}</ul>
 </div>
+</div></section>
 """
-    for page, anchor in [("products.html", "</div>\n</section>\n\n<section class=\"catalog-band\""),
-                         ("tech.html", None)]:
+    for page in ("products.html", "tech.html"):
         p = os.path.join(EN, page)
         if not os.path.exists(p):
             continue
         s = io.open(p, encoding="utf-8").read()
+        # 幂等清理：兼容旧的裸 div 与新的 section 包裹
+        if "fr-band" in s:
+            s = re.sub(r'<section class="fr-band">.*?</section>\s*', "", s, flags=re.S)
         if "further-reading" in s:
             s = re.sub(r'<div class="further-reading">.*?</div>\s*', "", s, flags=re.S)
-        if anchor and anchor in s:
-            s = s.replace(anchor, block + "</div>\n</section>\n\n<section class=\"catalog-band\"", 1)
-            io.open(p, "w", encoding="utf-8", newline="").write(s)
-            print(f"  注入内链: {page}")
-            continue
         # tech.html：插在 footer 之前
-        if "<footer class=\"site-footer\">" in s:
-            s = s.replace("<footer class=\"site-footer\">", block + "<footer class=\"site-footer\">", 1)
+        if '<footer class="site-footer">' in s:
+            s = s.replace('<footer class="site-footer">', block + '<footer class="site-footer">', 1)
             io.open(p, "w", encoding="utf-8", newline="").write(s)
             print(f"  注入内链: {page}")
 

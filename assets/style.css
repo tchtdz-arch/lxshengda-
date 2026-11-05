@@ -362,7 +362,7 @@ html[lang="en"] .f-line{font-size:13px}
 .grade-table-ndt{min-width:820px}
 
 /* ===== 技术文章（Insights）===== */
-.art-band{padding:52px 0 64px;background:#fff}
+.art-band{padding:96px 0 64px;background:#fff}
 .art-body{max-width:820px}
 .art-meta{font-size:12.5px;color:#8A93A6;margin-bottom:14px;letter-spacing:.02em}
 .art-meta a{color:var(--orange,#E8590C);text-decoration:none}
@@ -390,9 +390,10 @@ html[lang="en"] .f-line{font-size:13px}
 .ins-card h3{font-size:16.5px;margin:0 0 10px;color:#1B2233;line-height:1.4}
 .ins-card p{font-size:13.5px;line-height:1.75;color:#5A6478;margin:0 0 14px}
 .ins-card span{font-size:13px;font-weight:600;color:var(--orange,#E8590C)}
-.further-reading{margin:24px 0 0;padding:18px 20px;background:#f7f8fb;border-radius:12px;border:1px solid #e8eaf0}
+.fr-band{padding:0 0 60px;background:#fff}
+.further-reading{margin:0;padding:18px 20px;background:#f7f8fb;border-radius:12px;border:1px solid #e8eaf0}
 .further-reading h3{font-size:14px;margin:0 0 10px;color:#1B2233}
 .further-reading ul{margin:0;padding-left:18px}
 .further-reading li{font-size:13.5px;line-height:1.8;color:#5A6478}
 .further-reading a{color:#1B4F9C;text-decoration:none}
-@media(max-width:760px){.art-band{padding:34px 0 44px}.art-body h1{font-size:25px}.art-lead{font-size:15px}.ins-grid{grid-template-columns:1fr}.art-table{font-size:12.5px}}
+@media(max-width:760px){.art-band{padding:92px 0 44px}.art-body h1{font-size:25px}.art-lead{font-size:15px}.ins-grid{grid-template-columns:1fr}.art-table{font-size:12.5px}}
