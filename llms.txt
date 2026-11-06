@@ -42,3 +42,5 @@ Location: Langxi Economic Development Zone, Xuancheng, Anhui, China (sales offic
   - [飞轮储能转子：锻件还是铸件](https://www.lxshengda.com/insights/flywheel-rotor-forged-vs-cast.html): 失效机理、检测可达性与批间一致性
   - [锻造比是什么，对锻件内部质量有什么影响](https://www.lxshengda.com/insights/forging-ratio-and-internal-quality.html): 定义、作用机理与合同约定方式
   - [锻件超声波探伤验收标准怎么定](https://www.lxshengda.com/insights/ut-acceptance-criteria.html): GB/T 6402、ASTM A388、EN 10228-3、JIS G 0587 对比
+  - [25Cr2Ni4MoV 是什么材料](https://www.lxshengda.com/insights/25cr2ni4mov-steel-guide.html): 成分窗口、大截面淬透性与转子锻件采购验收要点
+  - [锻件常见缺陷：裂纹、白点、夹杂、折叠](https://www.lxshengda.com/insights/forging-defects-guide.html): 六类缺陷的成因、检出手段与验收条款写法

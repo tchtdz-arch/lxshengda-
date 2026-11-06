@@ -35,6 +35,12 @@ KEYWORDS = {
     "ut-acceptance-criteria":
         "超声波探伤,UT探伤,锻件探伤标准,GB/T 6402,ASTM A388,EN 10228-3,"
         "探伤验收等级,无损检测,锻件检测",
+    "25cr2ni4mov-steel-guide":
+        "25Cr2Ni4MoV,25Cr2Ni4MoV是什么材料,25Cr2Ni4MoV化学成分,25Cr2Ni4MoV力学性能,"
+        "飞轮转子材料,汽轮机转子钢,合金结构钢,高强韧性锻件,转子锻件,锻件用钢",
+    "forging-defects-guide":
+        "锻件缺陷,锻件裂纹,白点,氢白点,非金属夹杂,折叠,过热过烧,脱碳,"
+        "锻件探伤,锻件质量,锻件验收,锻件检验",
 }
 
 
@@ -110,12 +116,14 @@ def breadcrumb_json(a):
 
 def build_article(a, header, footer, lightbox, scripts):
     slug, url = a["slug"], f"{SITE}/insights/{a['slug']}.html"
-    # 英文站对应文章 slug 与中文不同，切换链接与 hreflang 必须用映射后的英文 slug
-    en_url = f"{SITE}/en/insights/{EN_SLUG[slug]}.html"
+    # 英文站对应文章 slug 与中文不同，切换链接与 hreflang 必须用映射后的英文 slug；
+    # 暂无英文对应文章的，降级指向英文文章列表页，避免死链。
+    en_path = f"../../en/insights/{EN_SLUG[slug]}.html" if slug in EN_SLUG else "../../en/insights.html"
+    en_url = f"{SITE}/en/insights/{EN_SLUG[slug]}.html" if slug in EN_SLUG else f"{SITE}/en/insights.html"
     faq_html = "".join(
         f'<div class="faq-item"><div class="q">{q}</div><div class="a-body"><p>{ans}</p></div></div>'
         for q, ans in a["faq"])
-    h = lang_link(header, f"../../en/insights/{EN_SLUG[slug]}.html")
+    h = lang_link(header, en_path)
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -284,7 +292,9 @@ def inject_further_reading():
     items = ""
     for a in ARTICLES:
         zh_slug = a["slug"]
-        items += (f'<li><a data-en="{EN_TITLE[zh_slug]}" data-en-href="insights/{EN_SLUG[zh_slug]}.html" '
+        en_href = f"insights/{EN_SLUG[zh_slug]}.html" if zh_slug in EN_SLUG else "insights.html"
+        en_title = EN_TITLE.get(zh_slug, "Technical notes")
+        items += (f'<li><a data-en="{en_title}" data-en-href="{en_href}" '
                   f'data-zh="{a["title"]}" href="insights/{zh_slug}.html">{a["title"]}</a></li>\n')
     items += ('<li><a data-en="All technical notes →" data-en-href="insights.html" '
               'data-zh="查看全部技术文章 →" href="insights.html">查看全部技术文章 →</a></li>\n')
